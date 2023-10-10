@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Poster Scanner</title>
+</head>
+<body>
+    <div id="homePage">
+        <h1>Welcome to AR Poster Scanner</h1>
+        <button onclick="openScanner()">Open Scanner</button>
+    </div>
+
+    <div id="scannerPage" style="display: none;">
+        <h2>QR Code Scanner</h2>
+        <video id="qrScanner" width="100%" height="auto"></video>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        function openScanner() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('scannerPage').style.display = 'block';
+
+            // Assume you have a function to start the QR scanner, replace it with your actual implementation
+            startQRScanner();
+        }
+
+        function goBack() {
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('scannerPage').style.display = 'none';
+
+            // Assume you have a function to stop the QR scanner, replace it with your actual implementation
+            stopQRScanner();
+        }
+
+        // Assume you have a function to handle QR code scanning, replace it with your actual implementation
+        function handleQRCode(data) {
+            alert("QR Code Scanned! Redirecting to: " + data);
+
+            // Perform redirection logic here
+            // You can use window.location.href = data; to redirect
+        }
+
+        // Assume you have a function to start the QR scanner, replace it with your actual implementation
+        function startQRScanner() {
+            const scanner = new Instascan.Scanner({ video: document.getElementById('qrScanner') });
+
+            scanner.addListener('scan', function (content) {
+                handleQRCode(content);
+            });
+
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('No cameras found.');
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+        }
+
+        // Assume you have a function to stop the QR scanner, replace it with your actual implementation
+        function stopQRScanner() {
+            // Stop the QR scanner logic
+        }
+    </script>
+
+    <!-- Include the Instascan library -->
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+</body>
+</html>
