@@ -46,20 +46,25 @@
 
         // Assume you have a function to start the QR scanner, replace it with your actual implementation
         function startQRScanner() {
-            const scanner = new Instascan.Scanner({ video: document.getElementById('qrScanner'), mirror: false }); // Set mirror to false for using back camera
-
-            scanner.addListener('scan', function (content) {
-                handleQRCode(content);
+            const scanner = new Instascan.Scanner({
+                video: document.getElementById('qrScanner'),
+                mirror: false, // Set mirror to false for using back camera
             });
 
             Instascan.Camera.getCameras().then(function (cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[0]);
+                    // Use the last camera (assumed to be the back camera)
+                    const backCamera = cameras[cameras.length - 1];
+                    scanner.start(backCamera);
                 } else {
                     console.error('No cameras found.');
                 }
             }).catch(function (e) {
                 console.error(e);
+            });
+
+            scanner.addListener('scan', function (content) {
+                handleQRCode(content);
             });
         }
 
