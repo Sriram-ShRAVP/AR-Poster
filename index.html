@@ -48,7 +48,7 @@
         function startQRScanner() {
             const scanner = new Instascan.Scanner({
                 video: document.getElementById('qrScanner'),
-                mirror: false, // Set mirror to false for using back camera
+                mirror: true, // Set mirror to false for using back camera
             });
 
             Instascan.Camera.getCameras().then(function (cameras) {
