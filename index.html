@@ -40,11 +40,13 @@
 
             // Perform redirection logic here
             // You can use window.location.href = data; to redirect
+            // For now, redirecting to the same page
+            window.location.href = data;
         }
 
         // Assume you have a function to start the QR scanner, replace it with your actual implementation
         function startQRScanner() {
-            const scanner = new Instascan.Scanner({ video: document.getElementById('qrScanner') });
+            const scanner = new Instascan.Scanner({ video: document.getElementById('qrScanner'), mirror: false }); // Set mirror to false for using back camera
 
             scanner.addListener('scan', function (content) {
                 handleQRCode(content);
