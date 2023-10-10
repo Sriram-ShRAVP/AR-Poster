@@ -16,7 +16,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin-bottom: 100px; /* Adjusted margin for the footer */
         }
 
         h1 {
@@ -39,6 +40,7 @@
 
         #button1 {
             background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+            border-width: 2px;
         }
 
         #button2 {
@@ -53,6 +55,31 @@
             background: white;
             color: #000000;
         }
+
+        /* Footer styles */
+        footer {
+            background: linear-gradient(to right, #ff94c2, #d681df, #91a7ff); /* Gradient Background */
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1; /* Keep the footer on top of the homepage */
+        }
+
+        .developer-names {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .developer-name {
+            margin: 0 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -61,6 +88,17 @@
     <a href="https://mywebar.com/p/christmas-sale" id="button1" class="button" style="color: black;">Christmas Poster</a>
     <a href="https://mywebar.com/p/businesscardsample" id="button2" class="button" style="color: black;">Business Card</a>
     <a href="https://example.com" id="button3" class="button" style="color: black;">Coming Soon</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>Developed by:</p>
+        <div class="developer-names">
+            <p class="developer-name">Sriram Parisa</p><br>
+            <p class="developer-name">Sumith Kumar</p><br>
+            <p class="developer-name">Bandari Neeraj</p><br>
+        </div>
+        <p>Under the Guidance of A. Naveen Kumar (Associate Professor) - MRCET College</p>
+    </footer>
 </body>
 
 </html>
